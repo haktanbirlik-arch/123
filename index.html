@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fit</title>
+<link rel="icon" href="2.png" type="image/x-icon"/>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Fit">
+</head>
+<body>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+ <!-- ══════════════ HOME PAGE ══════════════ -->
+  <!-- ══════════════ HOME PAGE ══════════════ -->
+   <!-- ══════════════ HOME PAGE ══════════════ -->
+    <!-- ══════════════ HOME PAGE ══════════════ -->
+     <!-- ══════════════ HOME PAGE ══════════════ -->
+      <!-- ══════════════ HOME PAGE ══════════════ -->
+<div class="page active" id="home">
+  <div class="home-shell">
+    <div class="week-calendar" id="weekCalendar"></div>
+
+    <div class="nav-bar">
+      <div class="welcome-text">
+        <span id="welcomeMsg">Welcome back, </span><span id="userName">Gizem</span>
+      </div>
+      <button class="badges-btn" onclick="goTo('badges'); buildBadges()">🏅</button>
+      <div class="streak-badge" id="streakBadge">
+        <div class="streak-flame">
+          <div class="flame-main"></div>
+          <div class="flame-inner"></div>
+          <div class="flame-tip"></div>
+        </div>
+        <span id="streakCount">0</span>
+      </div>
+    </div>
+
+    <div class="avatar-wrap">
+        <div class="background">
+
+        </div>
+        <div class="speech-bubble" id="speechBubble"></div>
+      <div class="avatar" id="homeAvatar">
+
+      </div>
+    </div>
+
+
+    <div class="home-footer">
+      <button class="start-btn" id="startBtn">Start Workout</button>
+      <button class="notif-btn" id="notifBtn" onclick="requestNotifPermission()">
+        🔔 Remind me daily
+      </button>
+      <p class="hint-text">SELECT YOUR DAY →</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════ DAY SELECT PAGE ══════════════ -->
+ <!-- ══════════════ DAY SELECT PAGE ══════════════ -->
+  <!-- ══════════════ DAY SELECT PAGE ══════════════ -->
+   <!-- ══════════════ DAY SELECT PAGE ══════════════ -->
+    <!-- ══════════════ DAY SELECT PAGE ══════════════ -->
+     <!-- ══════════════ DAY SELECT PAGE ══════════════ -->
+      <!-- ══════════════ DAY SELECT PAGE ══════════════ -->
+
+<div class="page" id="dayselect">
+<div class="day-shell">
+  <div class="page-header">
+    <div class="back-btn" onclick="goTo('home')">←</div>
+    <div>
+      <div class="page-title">Pick Your Day</div>
+      <div class="page-sub">Choose today's session</div>
+    </div>
+  </div>
+
+  <div class="days-grid" id="daysGrid">
+    <!-- filled by JS -->
+  </div>
+</div>
+</div>
+
+<!-- ══════════════ WORKOUT PAGE ══════════════ -->
+ <!-- ══════════════ WORKOUT PAGE ══════════════ -->
+  <!-- ══════════════ WORKOUT PAGE ══════════════ -->
+   <!-- ══════════════ WORKOUT PAGE ══════════════ -->
+    <!-- ══════════════ WORKOUT PAGE ══════════════ -->
+     <!-- ══════════════ WORKOUT PAGE ══════════════ -->
+      <!-- ══════════════ WORKOUT PAGE ══════════════ -->
+
+<div class="page" id="workout">
+<div class="workout-shell">
+  <div class="page-header">
+    <div class="back-btn" onclick="goTo('dayselect')">←</div>
+    <div class="workout-meta">
+      <div class="workout-day-label" id="wDayLabel">Monday</div>
+      <div class="workout-title" id="wTitle">Chest & Triceps</div>
+    </div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+  <div class="progress-label" id="progressLabel">0 / 6 completed</div>
+
+  <div class="exercises-list" id="exercisesList"></div>
+
+  <button class="finish-btn" id="finishBtn" disabled onclick="finishWorkout()">
+    Complete Workout
+  </button>
+</div>
+</div>
+
+<!-- ══════════════ BADGES PAGE ══════════════ -->
+ <!-- ══════════════ BADGES PAGE ══════════════ -->
+  <!-- ══════════════ BADGES PAGE ══════════════ -->
+   <!-- ══════════════ BADGES PAGE ══════════════ -->
+    <!-- ══════════════ BADGES PAGE ══════════════ -->
+     <!-- ══════════════ BADGES PAGE ══════════════ -->
+      <!-- ══════════════ BADGES PAGE ══════════════ -->
+       <!-- ══════════════ BADGES PAGE ══════════════ -->
+
+<div class="page" id="badges">
+  <div class="badges-shell">
+    <div class="page-header">
+      <div class="back-btn" onclick="goTo('home')">←</div>
+      <div>
+        <div class="page-title">Achievements</div>
+        <div class="page-sub">Your earned badges</div>
+      </div>
+    </div>
+    <div class="badges-grid" id="badgesGrid"></div>
+  </div>
+  </div>
+
+<!-- ══════════════ DONE PAGE ══════════════ -->
+ <!-- ══════════════ DONE PAGE ══════════════ -->
+  <!-- ══════════════ DONE PAGE ══════════════ -->
+   <!-- ══════════════ DONE PAGE ══════════════ -->
+    <!-- ══════════════ DONE PAGE ══════════════ -->
+     <!-- ══════════════ DONE PAGE ══════════════ -->
+      <!-- ══════════════ DONE PAGE ══════════════ -->
+
+<div class="page" id="done">
+<canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+<div class="done-shell">
+  <div class="done-avatar-wrap">
+    <div class="done-avatar" id="doneAvatar">
+      
+    </div>
+    <div class="energy-ring" id="energyRing">
+
+    </div>
+  </div>
+
+  <div class="done-label">Session Complete</div>
+  <div class="done-title">Day<br>Crushed.</div>
+  <div class="done-sub" id="doneSubText">Every rep counted. Rest up and come back stronger.</div>
+
+  <div class="done-stats">
+    <div class="done-stat">
+      <span class="done-stat-val" id="statExercises">6</span>
+      <span class="done-stat-label">Exercises</span>
+    </div>
+    <div class="done-sep"></div>
+    <div class="done-stat">
+      <span class="done-stat-val" id="statSets">18</span>
+      <span class="done-stat-label">Sets</span>
+    </div>
+    <div class="done-sep"></div>
+    <div class="done-stat">
+      <span class="done-stat-val" id="statStreak">7</span>
+      <span class="done-stat-label">Day Streak</span>
+    </div>
+  </div>
+
+  <button class="home-again-btn" onclick="goHome()">← Back to Home</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
